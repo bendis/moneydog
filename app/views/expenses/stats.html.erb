@@ -1,0 +1,16 @@
+<h1>Expenses stats</h1>
+<%= link_to 'Back', expenses_path %><table>
+
+<p>
+  Total: <strong><%= @total %></strong><br />
+  Current month: <strong><%= @current_month %></strong>
+</p>
+<p>
+  Benzín: <%= @benzin %><br />
+  Obědy Jirka: <%= @obed %><br />
+  Nákup - potraviny, drogerie: <%= @nakup %><br />
+</p>
+
+<br />
+
+<%= link_to 'Back', expenses_path %>
