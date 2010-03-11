@@ -1,4 +1,6 @@
 class ExpensesController < ApplicationController
+
+  before_filter :authenticate
   # GET /expenses
   # GET /expenses.xml
   def index
@@ -98,4 +100,11 @@ class ExpensesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+    def authenticate
+      authenticate_or_request_with_http_basic do |user_name, password| 
+        user_name == USER_NAME && password == PASSWORD
+      end
+    end
 end
