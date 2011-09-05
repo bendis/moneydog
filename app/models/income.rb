@@ -1,6 +1,6 @@
-class Expense < ActiveRecord::Base
+class Income < ActiveRecord::Base
   validates_presence_of :name
-  validates_numericality_of :price
+  validates_presence_of :amount
 
   named_scope :current_month, lambda {
     {:conditions => ["created_at >= ?",

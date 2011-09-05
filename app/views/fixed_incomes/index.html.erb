@@ -1,0 +1,22 @@
+<h1>Listing fixed_incomes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Amount</th>
+  </tr>
+
+<% @fixed_incomes.each do |fixed_income| %>
+  <tr>
+    <td><%=h fixed_income.name %></td>
+    <td><%=h fixed_income.amount %></td>
+    <td><%= link_to t('Show'), fixed_income %></td>
+    <td><%= link_to t('Edit'), edit_fixed_income_path(fixed_income) %></td>
+    <td><%= link_to t('Destroy'), fixed_income, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New fixed_income', new_fixed_income_path %>

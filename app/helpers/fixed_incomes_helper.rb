@@ -1,0 +1,2 @@
+module FixedIncomesHelper
+end

@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @fixed_income.name %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%=h @fixed_income.amount %>
+</p>
+
+
+<%= link_to t('Edit'), edit_fixed_income_path(@fixed_income) %> |
+<%= link_to 'Back', fixed_incomes_path %>

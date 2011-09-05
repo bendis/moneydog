@@ -1,0 +1,20 @@
+<h1>Editing income</h1>
+
+<% form_for(@income) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :amount %><br />
+    <%= f.text_field :amount %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to t('Show'), @income %> |
+<%= link_to 'Back', incomes_path %>

@@ -12,9 +12,9 @@
     <td><%=h expense.name %></td>
     <td class="right"><%=h price_formatted expense.price %></td>
     <td><%=h expense.date %></td>
-    <td><%= link_to 'Show', expense %></td>
-    <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
-    <td><%= link_to 'Destroy', expense, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t('Show'), expense %></td>
+    <td><%= link_to t('Edit'), edit_expense_path(expense) %></td>
+    <td><%= link_to t('Destroy'), expense, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 <tr>

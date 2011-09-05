@@ -1,5 +1,6 @@
 class ExpensesController < ApplicationController
 
+  layout 'moneydog'
   before_filter :authenticate
   # GET /expenses
   # GET /expenses.xml
@@ -63,7 +64,7 @@ class ExpensesController < ApplicationController
     respond_to do |format|
       if @expense.save
         flash[:notice] = 'Expense was successfully created.'
-        format.html { redirect_to(@expense) }
+        format.html { redirect_to(expenses_path) }
         format.xml  { render :xml => @expense, :status => :created, :location => @expense }
       else
         format.html { render :action => "new" }
@@ -80,7 +81,7 @@ class ExpensesController < ApplicationController
     respond_to do |format|
       if @expense.update_attributes(params[:expense])
         flash[:notice] = 'Expense was successfully updated.'
-        format.html { redirect_to(@expense) }
+        format.html { redirect_to(expenses_path) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

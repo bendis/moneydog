@@ -6,6 +6,11 @@ body, p, ol, ul, td {
   line-height: 18px;
 }
 
+table.overview {
+  font-size: 16px;
+  font-weight: bold;
+}
+
 tr td, tr th {
   border-bottom: 1px solid #ddd;
   padding-left: 10px;
@@ -67,3 +72,17 @@ a:hover { color: #fff; background-color:#000; }
   list-style: square;
 }
 
+ul#menu {
+  background-color: #444;
+  color: #fff;
+  padding: 10px;
+  list-style: none;
+  margin-top: 0;
+}
+ul#menu li{
+  display: inline;
+  margin-right: 20px;
+}
+ul#menu li a{
+  color: #fff;
+}

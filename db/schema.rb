@@ -9,12 +9,39 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100105194716) do
+ActiveRecord::Schema.define(:version => 20110829211701) do
 
   create_table "expenses", :force => true do |t|
     t.string   "name"
     t.float    "price"
     t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fixed_expenses", :force => true do |t|
+    t.string   "name"
+    t.float    "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fixed_incomes", :force => true do |t|
+    t.string   "name"
+    t.float    "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "incomes", :force => true do |t|
+    t.string   "name"
+    t.float    "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "savings", :force => true do |t|
+    t.float    "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
