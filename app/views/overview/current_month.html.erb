@@ -17,6 +17,17 @@
     <td><%=h price_formatted @balance%></td>
   </tr>
 </table>
+<br />
+<table class="overview">
+  <tr>
+    <% i = 1
+    @weekly_balance.each do |wb| %>
+      <td>Týden <%= i %>:&nbsp;&nbsp;&nbsp;<%=h price_formatted wb %></td>
+    <% 
+    i +=1 
+    end %>
+  </tr>
+</table>
 <%= link_to t('New expense'), new_expense_path %>
 <table>
   <tr>
