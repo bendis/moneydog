@@ -12,7 +12,7 @@ class Expense < ActiveRecord::Base
     beginning_of_week = Date.new(Time.now.year,Time.now.month,((i*7)-6))
     end_of_week = Date.new(Time.now.year,Time.now.month,(i*7))
     {:conditions => ["created_at >= ? AND created_at <= ?",
-      beginning_of_week, end_of_week]}
+      beginning_of_week.to_s(:db), end_of_week.to_s(:db)]}
   }
 
 end
