@@ -1,12 +1,12 @@
 class ExpensesController < ApplicationController
 
   layout 'moneydog'
-  before_filter :authenticate
+  before_filter :require_user
   # GET /expenses
   # GET /expenses.xml
   def index
-    @expenses = Expense.all(:order => "date DESC")
-    @sum = Expense.sum(:price)
+    @expenses = Expense.for_user(current_user).all(:order => "date DESC")
+    @sum = Expense.for_user(current_user).sum(:price)
     
     respond_to do |format|
       format.html # index.html.erb
@@ -15,14 +15,14 @@ class ExpensesController < ApplicationController
   end
   
   def stats
-    @total = Expense.sum('price')
+    @total = Expense.for_user(current_user).sum('price')
     
     range = Date.today.beginning_of_month..Date.today.end_of_month
     
-    @current_month = Expense.sum('price', :conditions => {:date => range})
-    @benzin = Expense.sum('price', :conditions => "name LIKE 'Benz%'")
-    @obed = Expense.sum('price', :conditions => "name LIKE '%oběd%'")
-    @nakup = Expense.sum('price', :conditions => "name LIKE 'Nákup%'")
+    @current_month = Expense.for_user(current_user).sum('price', :conditions => {:date => range})
+    @benzin = Expense.for_user(current_user).sum('price', :conditions => "name LIKE 'Benz%'")
+    @obed = Expense.for_user(current_user).sum('price', :conditions => "name LIKE '%oběd%'")
+    @nakup = Expense.for_user(current_user).sum('price', :conditions => "name LIKE 'Nákup%'")
     
     respond_to do |format|
       format.html # stats.html.erb
@@ -32,7 +32,7 @@ class ExpensesController < ApplicationController
   # GET /expenses/1
   # GET /expenses/1.xml
   def show
-    @expense = Expense.find(params[:id])
+    @expense = Expense.for_user(current_user).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -53,13 +53,14 @@ class ExpensesController < ApplicationController
 
   # GET /expenses/1/edit
   def edit
-    @expense = Expense.find(params[:id])
+    @expense = Expense.for_user(current_user).find(params[:id])
   end
 
   # POST /expenses
   # POST /expenses.xml
   def create
     @expense = Expense.new(params[:expense])
+    @expense.user_id = current_user.id
 
     respond_to do |format|
       if @expense.save
@@ -76,7 +77,7 @@ class ExpensesController < ApplicationController
   # PUT /expenses/1
   # PUT /expenses/1.xml
   def update
-    @expense = Expense.find(params[:id])
+    @expense = Expense.for_user(current_user).find(params[:id])
 
     respond_to do |format|
       if @expense.update_attributes(params[:expense])
@@ -93,7 +94,7 @@ class ExpensesController < ApplicationController
   # DELETE /expenses/1
   # DELETE /expenses/1.xml
   def destroy
-    @expense = Expense.find(params[:id])
+    @expense = Expense.for_user(current_user).find(params[:id])
     @expense.destroy
 
     respond_to do |format|
@@ -102,10 +103,4 @@ class ExpensesController < ApplicationController
     end
   end
   
-  private
-    def authenticate
-      authenticate_or_request_with_http_basic do |user_name, password| 
-        user_name == USER_NAME && password == PASSWORD
-      end
-    end
 end

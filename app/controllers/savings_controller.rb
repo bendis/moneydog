@@ -1,9 +1,10 @@
 class SavingsController < ApplicationController
+  before_filter :require_user
   layout 'moneydog'
   # GET /savings
   # GET /savings.xml
   def index
-    @savings = Saving.all
+    @savings = Saving.for_user(current_user).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +15,7 @@ class SavingsController < ApplicationController
   # GET /savings/1
   # GET /savings/1.xml
   def show
-    @saving = Saving.find(params[:id])
+    @saving = Saving.for_user(current_user).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,13 +36,14 @@ class SavingsController < ApplicationController
 
   # GET /savings/1/edit
   def edit
-    @saving = Saving.find(params[:id])
+    @saving = Saving.for_user(current_user).find(params[:id])
   end
 
   # POST /savings
   # POST /savings.xml
   def create
     @saving = Saving.new(params[:saving])
+    @saving.user_id = current_user.id
 
     respond_to do |format|
       if @saving.save
@@ -58,7 +60,7 @@ class SavingsController < ApplicationController
   # PUT /savings/1
   # PUT /savings/1.xml
   def update
-    @saving = Saving.find(params[:id])
+    @saving = Saving.for_user(current_user).find(params[:id])
 
     respond_to do |format|
       if @saving.update_attributes(params[:saving])
@@ -75,7 +77,7 @@ class SavingsController < ApplicationController
   # DELETE /savings/1
   # DELETE /savings/1.xml
   def destroy
-    @saving = Saving.find(params[:id])
+    @saving = Saving.for_user(current_user).find(params[:id])
     @saving.destroy
 
     respond_to do |format|

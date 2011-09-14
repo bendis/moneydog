@@ -1,10 +1,10 @@
 class FixedIncomesController < ApplicationController
   layout 'moneydog'
-  before_filter :authenticate
+  before_filter :require_user
   # GET /fixed_incomes
   # GET /fixed_incomes.xml
   def index
-    @fixed_incomes = FixedIncome.all
+    @fixed_incomes = FixedIncome.for_user(current_user).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class FixedIncomesController < ApplicationController
   # GET /fixed_incomes/1
   # GET /fixed_incomes/1.xml
   def show
-    @fixed_income = FixedIncome.find(params[:id])
+    @fixed_income = FixedIncome.for_user(current_user).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,13 +36,14 @@ class FixedIncomesController < ApplicationController
 
   # GET /fixed_incomes/1/edit
   def edit
-    @fixed_income = FixedIncome.find(params[:id])
+    @fixed_income = FixedIncome.for_user(current_user).find(params[:id])
   end
 
   # POST /fixed_incomes
   # POST /fixed_incomes.xml
   def create
     @fixed_income = FixedIncome.new(params[:fixed_income])
+    @fixed_income.user_id = current_user.id
 
     respond_to do |format|
       if @fixed_income.save
@@ -59,7 +60,7 @@ class FixedIncomesController < ApplicationController
   # PUT /fixed_incomes/1
   # PUT /fixed_incomes/1.xml
   def update
-    @fixed_income = FixedIncome.find(params[:id])
+    @fixed_income = FixedIncome.for_user(current_user).find(params[:id])
 
     respond_to do |format|
       if @fixed_income.update_attributes(params[:fixed_income])
@@ -76,7 +77,7 @@ class FixedIncomesController < ApplicationController
   # DELETE /fixed_incomes/1
   # DELETE /fixed_incomes/1.xml
   def destroy
-    @fixed_income = FixedIncome.find(params[:id])
+    @fixed_income = FixedIncome.for_user(current_user).find(params[:id])
     @fixed_income.destroy
 
     respond_to do |format|

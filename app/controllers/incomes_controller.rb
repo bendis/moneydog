@@ -1,10 +1,10 @@
 class IncomesController < ApplicationController
   layout 'moneydog'
-  before_filter :authenticate
+  before_filter :require_user
   # GET /incomes
   # GET /incomes.xml
   def index
-    @incomes = Income.all
+    @incomes = Income.for_user(current_user).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class IncomesController < ApplicationController
   # GET /incomes/1
   # GET /incomes/1.xml
   def show
-    @income = Income.find(params[:id])
+    @income = Income.for_user(current_user).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,13 +36,14 @@ class IncomesController < ApplicationController
 
   # GET /incomes/1/edit
   def edit
-    @income = Income.find(params[:id])
+    @income = Income.for_user(current_user).find(params[:id])
   end
 
   # POST /incomes
   # POST /incomes.xml
   def create
     @income = Income.new(params[:income])
+    @income.user_id = current_user.id
 
     respond_to do |format|
       if @income.save
@@ -59,7 +60,7 @@ class IncomesController < ApplicationController
   # PUT /incomes/1
   # PUT /incomes/1.xml
   def update
-    @income = Income.find(params[:id])
+    @income = Income.for_user(current_user).find(params[:id])
 
     respond_to do |format|
       if @income.update_attributes(params[:income])
@@ -76,7 +77,7 @@ class IncomesController < ApplicationController
   # DELETE /incomes/1
   # DELETE /incomes/1.xml
   def destroy
-    @income = Income.find(params[:id])
+    @income = Income.for_user(current_user).find(params[:id])
     @income.destroy
 
     respond_to do |format|

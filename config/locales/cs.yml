@@ -1,12 +1,50 @@
 cs:
   Current month: Aktuální měsíc
+  current_month: Aktuální měsíc
+  OverviewController: Přehledy
   Fixed expenses: Fixní výdaje
+  FixedExpensesController: Fixní výdaje
   Fixed incomes: Fixní příjmy
+  FixedIncomesController: Fixní příjmy
+  UserSessionsController: Přihlášení
+  UsersController: Uživatel
   Incomes: Příjmy
+  IncomesController: Příjmy
   Expenses: Výdaje
+  ExpensesController: Výdaje
   Savings: Úspory
+  SavingsController: Úspory
   New expense: Nový výdaj
   Show: Detail
+  show: Detail
   Edit: Upravit
+  edit: Upravit
+  new: Nový
+  index: Přehled
   Destroy: Smazat
   Balance: Bilance
+  
+  Login successful: Přihlášení proběhlo úspěšně
+  Logout successful: Odhlášení proběhlo úspěšně
+              
+  authlogic:
+    error_messages:
+      login_blank: nemůže být prázdné
+      login_not_found: není validní
+      login_invalid: může obsahovat jen písmena, čísla, mezery, a .-_@
+      consecutive_failed_logins_limit_exceeded: Consecutive failed logins limit exceeded, account is disabled.
+      email_invalid: musí být ve tvaru emailové adresy.
+      password_blank: nemůže být prázdné
+      password_invalid: není validní
+      not_active: Váš účet není aktivován
+      not_confirmed: Váš účet není potvrzen
+      not_approved: Váš účet není schválen
+      no_authentication_details: Nevyplnili jste žádné údaje pro přihlášení
+    models:
+      user_session:
+    attributes:
+      user_session:
+        login: přihlašovací jméno
+        email: email
+        password: heslo
+        remember_me: zapamatovat heslo
