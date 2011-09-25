@@ -1,0 +1,13 @@
+#edit
+  .toolbar
+    %h1= t 'Editing expense'
+    %a{:href=>expenses_path, :class=>"button leftButton back"}
+      =t 'Back'
+
+  =render :partial=>'form'
+  %ul.individual
+    %li
+      =link_to t('Show'), @expense
+    %li
+      =link_to t('Destroy'), @expense, :method => :delete, :confirm => 'Are you sure?'
+  

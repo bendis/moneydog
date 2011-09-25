@@ -1,0 +1,21 @@
+#expenses
+  .toolbar
+    %h1
+      Výdaje
+    %a{:href=>"#home", :class=>"button leftButton back"}
+      =t 'Back'
+    = link_to "+", new_expense_path, :class => 'external add'
+      
+  %ul.rounded
+    -@expenses.each do |expense| 
+      %li.arrow
+        %a{:href => edit_expense_path(expense), :class => 'external'}
+          =h expense.date 
+          =h expense.name 
+          
+          %small
+            =h price_formatted expense.price 
+    %li
+      Total: 
+      %small
+        %strong= price_formatted @current_month_expenses_amount 

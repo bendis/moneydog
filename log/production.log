@@ -1,0 +1,175 @@
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2011-09-25 21:57:44) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/moneydog
+Rendering user_sessions/new
+
+ActionView::TemplateError (undefined method `email' for #<UserSession: no credentials provided>) on line #6 of app/views/user_sessions/new.iphone.erb:
+3: <% form_for @user_session, :url => user_session_path do |f| %>
+4:   <%= f.error_messages %>
+5:   <%= f.label :email %><br />
+6:   <%= f.text_field :email %><br />
+7:   <br />
+8:   <%= f.label :password %><br />
+9:   <%= f.password_field :password %><br />
+
+    app/views/user_sessions/new.iphone.erb:6
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:235:in `form_for'
+    app/views/user_sessions/new.iphone.erb:3
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (3.0.21) rails/./lib/sass/plugin/rack.rb:41:in `call'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2011-09-25 21:57:47) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/moneydog
+Rendering user_sessions/new
+
+ActionView::TemplateError (undefined method `email' for #<UserSession: no credentials provided>) on line #6 of app/views/user_sessions/new.iphone.erb:
+3: <% form_for @user_session, :url => user_session_path do |f| %>
+4:   <%= f.error_messages %>
+5:   <%= f.label :email %><br />
+6:   <%= f.text_field :email %><br />
+7:   <br />
+8:   <%= f.label :password %><br />
+9:   <%= f.password_field :password %><br />
+
+    app/views/user_sessions/new.iphone.erb:6
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:235:in `form_for'
+    app/views/user_sessions/new.iphone.erb:3
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (3.0.21) rails/./lib/sass/plugin/rack.rb:41:in `call'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new (for 192.168.2.100 at 2011-09-25 21:57:49) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/moneydog
+Rendering user_sessions/new
+
+ActionView::TemplateError (undefined method `email' for #<UserSession: no credentials provided>) on line #6 of app/views/user_sessions/new.iphone.erb:
+3: <% form_for @user_session, :url => user_session_path do |f| %>
+4:   <%= f.error_messages %>
+5:   <%= f.label :email %><br />
+6:   <%= f.text_field :email %><br />
+7:   <br />
+8:   <%= f.label :password %><br />
+9:   <%= f.password_field :password %><br />
+
+    app/views/user_sessions/new.iphone.erb:6
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:235:in `form_for'
+    app/views/user_sessions/new.iphone.erb:3
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (3.0.21) rails/./lib/sass/plugin/rack.rb:41:in `call'
+
+Rendering /Users/bendis/htdocs/moneydog/public/500.html (500 Internal Server Error)
+
+
+Processing OverviewController#current_month (for 127.0.0.1 at 2011-09-25 21:57:57) [GET]
+  Parameters: {"action"=>"current_month", "controller"=>"overview"}
+Redirected to http://localhost:3000/user_session/new
+Filter chain halted as [:require_user] rendered_or_redirected.
+Completed in 2ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2011-09-25 21:57:57) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/moneydog
+Rendering user_sessions/new
+
+ActionView::TemplateError (undefined method `email' for #<UserSession: no credentials provided>) on line #6 of app/views/user_sessions/new.iphone.erb:
+3: <% form_for @user_session, :url => user_session_path do |f| %>
+4:   <%= f.error_messages %>
+5:   <%= f.label :email %><br />
+6:   <%= f.text_field :email %><br />
+7:   <br />
+8:   <%= f.label :password %><br />
+9:   <%= f.password_field :password %><br />
+
+    app/views/user_sessions/new.iphone.erb:6
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:235:in `form_for'
+    app/views/user_sessions/new.iphone.erb:3
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (3.0.21) rails/./lib/sass/plugin/rack.rb:41:in `call'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new (for 192.168.2.100 at 2011-09-25 21:57:59) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/moneydog
+Rendering user_sessions/new
+
+ActionView::TemplateError (undefined method `email' for #<UserSession: no credentials provided>) on line #6 of app/views/user_sessions/new.iphone.erb:
+3: <% form_for @user_session, :url => user_session_path do |f| %>
+4:   <%= f.error_messages %>
+5:   <%= f.label :email %><br />
+6:   <%= f.text_field :email %><br />
+7:   <br />
+8:   <%= f.label :password %><br />
+9:   <%= f.password_field :password %><br />
+
+    app/views/user_sessions/new.iphone.erb:6
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:235:in `form_for'
+    app/views/user_sessions/new.iphone.erb:3
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (3.0.21) rails/./lib/sass/plugin/rack.rb:41:in `call'
+
+Rendering /Users/bendis/htdocs/moneydog/public/500.html (500 Internal Server Error)
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2011-09-25 21:58:50) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/moneydog
+Rendering user_sessions/new
+
+ActionView::TemplateError (undefined method `email' for #<UserSession: no credentials provided>) on line #6 of app/views/user_sessions/new.iphone.erb:
+3: <% form_for @user_session, :url => user_session_path do |f| %>
+4:   <%= f.error_messages %>
+5:   <%= f.label :email %><br />
+6:   <%= f.text_field :email %><br />
+7:   <br />
+8:   <%= f.label :password %><br />
+9:   <%= f.password_field :password %><br />
+
+    app/views/user_sessions/new.iphone.erb:6
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:235:in `form_for'
+    app/views/user_sessions/new.iphone.erb:3
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (3.0.21) rails/./lib/sass/plugin/rack.rb:41:in `call'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing UserSessionsController#new (for 192.168.2.100 at 2011-09-25 22:00:26) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/moneydog
+Rendering user_sessions/new
+
+ActionView::TemplateError (undefined method `email' for #<UserSession: no credentials provided>) on line #6 of app/views/user_sessions/new.iphone.erb:
+3: <% form_for @user_session, :url => user_session_path do |f| %>
+4:   <%= f.error_messages %>
+5:   <%= f.label :email %><br />
+6:   <%= f.text_field :email %><br />
+7:   <br />
+8:   <%= f.label :password %><br />
+9:   <%= f.password_field :password %><br />
+
+    app/views/user_sessions/new.iphone.erb:6
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:235:in `form_for'
+    app/views/user_sessions/new.iphone.erb:3
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (3.0.21) rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (3.0.21) rails/./lib/sass/plugin/rack.rb:41:in `call'
+
+Rendering /Users/bendis/htdocs/moneydog/public/500.html (500 Internal Server Error)

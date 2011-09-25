@@ -4,19 +4,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Moneydog | <%= controller.name %> | <%= controller.action_name %></title>
+  <title>Moneydog</title>
   <script type="text/javascript" src="http://www.google.com/jsapi"></script>
   <script type="text/javascript"> google.load("jquery", "1.4.2"); </script>
-  <script src="jqtouch/jqtouch.min.js" type="application/x-javascript" charset="utf-8"></script>
-  <style type="text/css" media="screen">@import "jqtouch/jqtouch.min.css";</style>
-  <style type="text/css" media="screen">@import "themes/jqt/theme.min.css";</style>
-  <%= javascript_tag 'application' %>
+  <script src="/javascripts/jqtouch.js" type="application/x-javascript" charset="utf-8"></script>
+  <%= stylesheet_link_tag 'jqtouch' %>
+  <%= stylesheet_link_tag 'themes/apple/theme.css' %>
+  <script type="text/javascript" charset="utf-8">
+  $.jQTouch({
+      icon: 'jqtouch.png',
+      statusBar: 'black-translucent',
+      preloadImages: [
+          'themes/apple/img/chevron_white.png',
+          'themes/apple/img/bg_row_select.gif',
+          'themes/apple/img/back_button_clicked.png',
+          'themes/apple/img/button_clicked.png'
+          ]
+  });
+  </script>
+  
 </head>
 <body>
-<%= render :partial => 'shared/menu' %>
-<p style="color: green"><%= flash[:notice] %></p>
-
-<%= yield %>
-
+  <%= yield %>
 </body>
 </html>

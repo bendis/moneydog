@@ -1,0 +1,19 @@
+-form_for(@expense) do |f|
+  = f.error_messages 
+  %p
+    = f.label :name
+    %br
+    = f.text_field :name 
+  %p
+    = f.label :price
+    %br
+    = f.text_field :price 
+  %p
+    = f.label :from_savings
+    = f.check_box :from_savings 
+  %p
+    = f.label :date
+    %br
+    = f.date_select :date 
+  %p
+    = f.submit t 'Save' 

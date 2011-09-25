@@ -1,0 +1,7 @@
+#new
+  .toolbar
+    %h1= t 'New expense'
+    %a{:href=>expenses_path, :class=>"button leftButton back"}
+      =t 'Back'
+
+  =render :partial=>'form'

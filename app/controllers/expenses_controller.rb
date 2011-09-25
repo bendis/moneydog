@@ -5,11 +5,12 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.xml
   def index
-    @expenses = Expense.for_user(current_user).all(:order => "date DESC")
+    @expenses = Expense.for_user(current_user).all
     @sum = Expense.for_user(current_user).sum(:price)
     
     respond_to do |format|
       format.html # index.html.erb
+      format.iphone {render :layout => false}
       format.xml  { render :xml => @expenses }
     end
   end
@@ -47,6 +48,7 @@ class ExpensesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
+      format.iphone { render :layout => false}
       format.xml  { render :xml => @expense }
     end
   end
@@ -54,6 +56,11 @@ class ExpensesController < ApplicationController
   # GET /expenses/1/edit
   def edit
     @expense = Expense.for_user(current_user).find(params[:id])
+    respond_to do |format|
+      format.html # new.html.erb
+      format.iphone { render :layout => false}
+    end
+    
   end
 
   # POST /expenses
@@ -66,9 +73,11 @@ class ExpensesController < ApplicationController
       if @expense.save
         flash[:notice] = 'Expense was successfully created.'
         format.html { redirect_to(expenses_path) }
+        format.iphone { redirect_to(expenses_path) }
         format.xml  { render :xml => @expense, :status => :created, :location => @expense }
       else
         format.html { render :action => "new" }
+        format.iphone { render :action => "new", :layout => false }
         format.xml  { render :xml => @expense.errors, :status => :unprocessable_entity }
       end
     end
@@ -98,7 +107,8 @@ class ExpensesController < ApplicationController
     @expense.destroy
 
     respond_to do |format|
-      format.html { redirect_to(expenses_url) }
+      format.html { redirect_to('/') }
+      format.iphone { redirect_to('/') }
       format.xml  { head :ok }
     end
   end

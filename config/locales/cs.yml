@@ -23,6 +23,9 @@ cs:
   index: Přehled
   Destroy: Smazat
   Balance: Bilance
+  Back: Zpět
+  Save: Uložit
+  Editing expense: Upravit výdaj
   
   Login successful: Přihlášení proběhlo úspěšně
   Logout successful: Odhlášení proběhlo úspěšně

@@ -7,8 +7,20 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation
 
   helper_method :current_user_session, :current_user
+  
+  before_filter :adjust_format_for_iphone
+
 
 private
+  # Set iPhone format if request
+  def adjust_format_for_iphone
+    if (request.env["HTTP_USER_AGENT"] && ((request.env["HTTP_USER_AGENT"][/(iPhone)/]== "iPhone") || (request.env["HTTP_USER_AGENT"][/(iPhone)/]== "Android")))
+      request.format = :iphone
+    else
+      return true
+    end
+  end
+
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find

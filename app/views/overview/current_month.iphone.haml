@@ -1,0 +1,91 @@
+#home
+  .toolbar
+    %h1= t 'Current month'
+  
+
+  %ul.rounded
+    %li.arrow
+      %a{:href=>"#weeks"}
+        Přehled po týdnech
+    %li.arrow
+      %a{:href=>"#expenses"}
+        Seznam výdajů
+    %li.arrow
+      %a{:href=>"#overview"}
+        Celkový přehled
+  %br
+  %br
+  %ul.individual
+    %li
+      = link_to t('New expense'), new_expense_path, :class => 'external'
+  
+
+#overview
+  .toolbar
+    %h1
+      = t 'Current month'
+    %a{:href=>"#home", :class=>"button leftButton back"}
+      =t 'Back'
+  %h2
+    Celkový přehled
+  %ul.rounded
+    %li
+      = t 'Fixed incomes'
+      =h price_formatted @fixed_incomes_amount
+    %li
+      = t 'Fixed expenses'
+      =h price_formatted @current_month_fixed_expenses_amount
+    %li
+      = t 'Expenses'
+      =h price_formatted @current_month_expenses_amount
+    %li
+      = t 'Incomes'
+      =h price_formatted @current_month_incomes_amount
+    %li
+      = t 'Savings'
+      =h price_formatted @savings
+    %li
+      = t 'Balance'
+      =h price_formatted @balance
+  
+#weeks
+  .toolbar
+    %h1
+      = t 'Current month'
+    %a{:href=>"#home", :class=>"button leftButton back"}
+      =t 'Back'
+  %h2
+    Přehled po týdnech
+  %ul.rounded
+    -i = 1
+    -@weekly_balance.each do |wb| 
+      %li
+        Týden
+        = i
+        =": "        
+        =h price_formatted wb
+        -i +=1 
+        
+#expenses
+  .toolbar
+    %h1
+      = t 'Current month'
+    %a{:href=>"#home", :class=>"button leftButton back"}
+      =t 'Back'
+    = link_to "+", new_expense_path, :class => 'external add'
+  %h2
+    Výdaje
+      
+  %ul.rounded
+    -@current_month_expenses.each do |expense| 
+      %li.arrow
+        %a{:href => edit_expense_path(expense), :class => 'external'}
+          =h expense.date 
+          =h expense.name 
+          
+          %small
+            =h price_formatted expense.price 
+    %li
+      Total: 
+      %small
+        %strong= price_formatted @current_month_expenses_amount 

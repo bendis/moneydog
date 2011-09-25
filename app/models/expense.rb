@@ -3,7 +3,9 @@ class Expense < ActiveRecord::Base
   validates_numericality_of :price
   
   belongs_to :user
-
+  
+  default_scope :order => "date DESC"
+  
   named_scope :for_user, lambda { |user|
     user = User.find(user) unless user.is_a? User
     user ? { :conditions => { :user_id => user.id } } : {}
@@ -22,5 +24,8 @@ class Expense < ActiveRecord::Base
     {:conditions => ["date >= ? AND date <= ?",
       beginning_of_week.to_s(:db), end_of_week.to_s(:db)]}
   }
+  
+  named_scope :not_from_savings, {:conditions => ["from_savings = ?", false]}
+  
 
 end

@@ -7,6 +7,10 @@ class UserSessionsController < ApplicationController
   
   def new
     @user_session = UserSession.new
+    respond_to do |format|
+      format.html
+      format.iphone
+    end
   end
   
   def create

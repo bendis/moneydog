@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110914202001) do
+ActiveRecord::Schema.define(:version => 20110925191613) do
 
   create_table "expenses", :force => true do |t|
     t.string   "name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20110914202001) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.boolean  "from_savings", :default => false
   end
 
   create_table "fixed_expenses", :force => true do |t|

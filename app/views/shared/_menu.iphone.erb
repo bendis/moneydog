@@ -1,0 +1,18 @@
+<ul id="menu">
+  <li><%= link_to t('Current month'), '/' %></li>
+  <li><%= link_to t('Fixed incomes'), fixed_incomes_path %></li>
+  <li><%= link_to t('Fixed expenses'), fixed_expenses_path %></li>
+  <li><%= link_to t('Incomes'), incomes_path %></li>
+  <li><%= link_to t('Expenses'), expenses_path %></li>
+  <li><%= link_to t('Savings'), savings_path %></li>
+  <li style="float:right">
+  <% if !current_user %>
+    <%= link_to "Register", new_account_path %> |
+    <%= link_to "Log In", new_user_session_path %> |
+  <% else %>
+    Logged as: <%= current_user.email %> |
+    <%= link_to "My Account", account_path %> |
+    <%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
+  <% end %>
+  </li>
+</ul>

@@ -1,0 +1,17 @@
+-form_for(@expense) do |f|
+  = f.error_messages 
+  %ul
+    %li
+      = f.text_field :name, :placeholder => :name
+    %li
+      = f.text_field :price, :placeholder => :price
+    %li
+      = f.label :from_savings
+      %span.toggle
+        = f.check_box :from_savings, :placeholder => :from_savings
+    %li
+      = f.label :date
+      %br
+      = f.date_select :date 
+  %a{:href=>"#", :style=>"margin: 10px;", :class=>"whiteButton submit external"}
+    =t 'Save'
