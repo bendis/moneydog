@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 private
   # Set iPhone format if request
   def adjust_format_for_iphone
-    if (request.env["HTTP_USER_AGENT"] && ((request.env["HTTP_USER_AGENT"][/(iPhone)/]== "iPhone") || (request.env["HTTP_USER_AGENT"][/(iPhone)/]== "Android")))
+    if (request.env["HTTP_USER_AGENT"] && ((request.env["HTTP_USER_AGENT"][/(iPhone)/]== "iPhone") || (request.env["HTTP_USER_AGENT"][/(Android)/]== "Android")))
       request.format = :iphone
     else
       return true
