@@ -13,7 +13,7 @@ set :use_sudo, false
 
 task :after_update_code, :roles => [:app, :db] do
   run "ln -nfs #{shared_path}/db/production.sqlite3 #{release_path}/db/production.sqlite3"
-  run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  run "ln -nfs #{shared_path}/config_sqlite/database.yml #{release_path}/config/database.yml"
 end
 
 
