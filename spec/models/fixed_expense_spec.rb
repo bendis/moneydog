@@ -2,13 +2,14 @@ require 'spec_helper'
 
 describe FixedExpense do
   before(:each) do
-    @valid_attributes = {
-      :name => "value for name",
-      :amount => 1.5
-    }
+    Factory(:user)
+  end
+  after(:all) do
+    FixedExpense.destroy_all
+    User.destroy_all
   end
 
   it "should create a new instance given valid attributes" do
-    FixedExpense.create!(@valid_attributes)
+    Factory.create(:fixed_expense)
   end
 end
