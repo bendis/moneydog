@@ -1,13 +1,13 @@
 <p>
-  <b>Name:</b>
+  <b><%= t'Name'%>:</b>
   <%=h @fixed_expense.name %>
 </p>
 
 <p>
-  <b>Amount:</b>
+  <b><%= t'Amount'%>:</b>
   <%=h @fixed_expense.amount %>
 </p>
 
 
 <%= link_to t('Edit'), edit_fixed_expense_path(@fixed_expense) %> |
-<%= link_to 'Back', fixed_expenses_path %>
+<%= link_to t('Back'), fixed_expenses_path %>

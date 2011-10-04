@@ -1,18 +1,18 @@
 <p>
-  <b>Name:</b>
+  <b><%= t 'Name'%>:</b>
   <%=h @expense.name %>
 </p>
 
 <p>
-  <b>Price:</b>
+  <b><%= t 'Price'%>:</b>
   <%=h @expense.price %>
 </p>
 
 <p>
-  <b>Date:</b>
+  <b><%= t 'Date'%>:</b>
   <%=h @expense.date %>
 </p>
 
 
 <%= link_to t('Edit'), edit_expense_path(@expense) %> |
-<%= link_to 'Back', expenses_path %>
+<%= link_to t('Back'), expenses_path %>

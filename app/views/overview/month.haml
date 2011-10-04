@@ -54,7 +54,7 @@
       %td=h expense.date 
       %td= link_to t('Show'), expense 
       %td= link_to t('Edit'), edit_expense_path(expense) 
-      %td= link_to t('Destroy'), expense, :confirm => 'Are you sure?', :method => :delete 
+      %td= link_to t('Destroy'), expense, :confirm => t('Are you sure?'), :method => :delete 
   %tr
     %thTotal: 
     %th{:class=>"right"}= price_formatted @month_expenses_amount 

@@ -1,8 +1,8 @@
 <p>
-  <b>Amount:</b>
+  <b><%=t'Amount'%>:</b>
   <%=h @saving.amount %>
 </p>
 
 
 <%= link_to t('Edit'), edit_saving_path(@saving) %> |
-<%= link_to 'Back', savings_path %>
+<%= link_to t('Back'), savings_path %>

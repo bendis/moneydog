@@ -1,9 +1,9 @@
-<h1>Listing incomes</h1>
+<h1><%=t'Listing incomes'%></h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Amount</th>
+    <th><%=t'Name'%></th>
+    <th><%=t'Amount'%></th>
   </tr>
 
 <% @incomes.each do |income| %>
@@ -12,11 +12,11 @@
     <td><%=h income.amount %></td>
     <td><%= link_to t('Show'), income %></td>
     <td><%= link_to t('Edit'), edit_income_path(income) %></td>
-    <td><%= link_to t('Destroy'), income, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t('Destroy'), income, :confirm => t('Are you sure?'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New income', new_income_path %>
+<%= link_to t('New income'), new_income_path %>

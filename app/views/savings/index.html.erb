@@ -1,8 +1,8 @@
-<h1>Listing savings</h1>
+<h1><%=t'Listing savings'%></h1>
 
 <table>
   <tr>
-    <th>Amount</th>
+    <th><%=t'Amount'%></th>
   </tr>
 
 <% @savings.each do |saving| %>
@@ -10,11 +10,11 @@
     <td><%=h saving.amount %></td>
     <td><%= link_to t('Show'), saving %></td>
     <td><%= link_to t('Edit'), edit_saving_path(saving) %></td>
-    <td><%= link_to t('Destroy'), saving, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t('Destroy'), saving, :confirm => t('Are you sure?'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New saving', new_saving_path %>
+<%= link_to t('New saving'), new_saving_path %>

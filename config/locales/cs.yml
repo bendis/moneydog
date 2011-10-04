@@ -15,10 +15,16 @@ cs:
   Savings: Úspory
   SavingsController: Úspory
   New expense: Nový výdaj
+  New income: Nový příjem
+  New saving: Nová úroveň úspor
+  New fixed_expense: Nový fixní výdaj
+  New fixed_income: Nový fixní příjem
   Show: Detail
   show: Detail
   Edit: Upravit
   edit: Upravit
+  Update: Upravit
+  Create: Vytořit
   new: Nový
   index: Přehled
   Destroy: Smazat
@@ -26,12 +32,71 @@ cs:
   Back: Zpět
   Save: Uložit
   Editing expense: Upravit výdaj
+  Editing income: Upravit příjem
+  Editing saving: Upravit úroveň úspor
+  Editing fixed_expense: Upravit fixní výdaj
+  Editing fixed_income: Upravit fixní příjem
   Login: Přihlásit
   Switch to month: Přepnout na měsíc
+  Listing expenses: Všechny výdaje
+  Listing incomes: Všechny příjmy
+  Listing fixed_expenses: Všechny fixní výdaje
+  Listing fixed_incomes: Všechny fixní příjmy
+  Listing savings: Úspory
+  Name: Název
+  Price: Částka
+  Amount: Částka
+  Date: Datum
+  Logged as: Přihlášen/a jako
+  Register: Vytvořit účet
+  Log in: Přihlásit se
+  My Account: Můj účet
+  Edit My Account: Upravit účet
+  My Profile: Můj účet
+  Logout: Odhlásit se
+  Are you sure you want to logout?: Opravdu se chcete odhlásit?
+  Are you sure?: Opravdu?
   
   Login successful: Přihlášení proběhlo úspěšně
   Logout successful: Odhlášení proběhlo úspěšně
-              
+  activerecord:
+    models:
+      expense: Výdaj
+      income: Příjem
+      fixed_income: Fixní příjem
+      fixed_expense: Fixní výdaj
+      user: Uživatel
+      saving: Úspora
+    attributes:
+      expense:
+        name: Název
+        price: Částka
+        from_savings: Z úspor
+        date: Datum
+      income:
+        name: Název
+        amount: Částka
+        date: Datum
+      saving:
+        amount: Částka
+      fixed_expense:
+        name: Název
+        amount: Částka
+      fixed_income:
+        name: Název
+        amount: Částka
+      user_session:
+        login: Přihlašovací jméno
+        email: Email
+        password: Heslo
+        remember_me: Zapamatovat heslo              
+      user:
+        login: Přihlašovací jméno
+        email: Email
+        password: Heslo
+        password_confirmation: Potvrzení hesla              
+  Change password: Změnit heslo
+
   authlogic:
     error_messages:
       login_blank: nemůže být prázdné

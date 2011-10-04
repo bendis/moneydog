@@ -1,9 +1,9 @@
-<h1>Listing fixed_expenses</h1>
+<h1><%= t 'Listing fixed_expenses' %></h1>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Amount</th>
+    <th><%= t'Name'%></th>
+    <th><%= t'Amount'%></th>
   </tr>
 
 <% @fixed_expenses.each do |fixed_expense| %>
@@ -12,11 +12,11 @@
     <td><%=h fixed_expense.amount %></td>
     <td><%= link_to t('Show'), fixed_expense %></td>
     <td><%= link_to t('Edit'), edit_fixed_expense_path(fixed_expense) %></td>
-    <td><%= link_to t('Destroy'), fixed_expense, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t('Destroy'), fixed_expense, :confirm => t('Are you sure?'), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New fixed_expense', new_fixed_expense_path %>
+<%= link_to t('New fixed_expense'), new_fixed_expense_path %>

@@ -1,10 +1,10 @@
-<h1>Listing expenses</h1>
-<%= link_to 'New expense', new_expense_path %>
+<h1><%= t 'Listing expenses' %></h1>
+<%= link_to t('New expense'), new_expense_path %>
 <table>
   <tr>
-    <th>Name</th>
-    <th>Price</th>
-    <th>Date</th>
+    <th><%= t 'Name' %></th>
+    <th><%= t 'Price' %></th>
+    <th><%= t 'Date' %></th>
   </tr>
 
 <% @expenses.each do |expense| %>
@@ -14,7 +14,7 @@
     <td><%=h expense.date %></td>
     <td><%= link_to t('Show'), expense %></td>
     <td><%= link_to t('Edit'), edit_expense_path(expense) %></td>
-    <td><%= link_to t('Destroy'), expense, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t('Destroy'), expense, :confirm => t('Are you sure?'), :method => :delete %></td>
   </tr>
 <% end %>
 <tr>

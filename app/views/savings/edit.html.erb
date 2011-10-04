@@ -1,4 +1,4 @@
-<h1>Editing saving</h1>
+<h1><%= t'Editing saving'%></h1>
 
 <% form_for(@saving) do |f| %>
   <%= f.error_messages %>
@@ -8,9 +8,9 @@
     <%= f.text_field :amount %>
   </p>
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit t'Update' %>
   </p>
 <% end %>
 
 <%= link_to t('Show'), @saving %> |
-<%= link_to 'Back', savings_path %>
+<%= link_to t('Back'), savings_path %>

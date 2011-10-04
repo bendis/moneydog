@@ -1,4 +1,4 @@
-<h1>Editing income</h1>
+<h1><%=t'Editing income'%></h1>
 
 <% form_for(@income) do |f| %>
   <%= f.error_messages %>
@@ -17,9 +17,9 @@
   </p>
   
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit t'Update' %>
   </p>
 <% end %>
 
 <%= link_to t('Show'), @income %> |
-<%= link_to 'Back', incomes_path %>
+<%= link_to t('Back'), incomes_path %>
