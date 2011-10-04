@@ -2,6 +2,9 @@ class OverviewController < ApplicationController
   layout 'moneydog'
   before_filter :require_user
   def current_month
+    @expenses_months = Expense.all.group_by{ |t| t.date.beginning_of_month }
+    
+    
     @fixed_incomes_amount = FixedIncome.for_user(current_user).sum(:amount)
     @current_month_fixed_expenses_amount = FixedExpense.for_user(current_user).sum(:amount)
     @current_month_expenses = Expense.for_user(current_user).current_month.not_from_savings.all
@@ -31,6 +34,8 @@ class OverviewController < ApplicationController
   end
   
   def month
+    @expenses_months = Expense.all.group_by{ |t| t.date.beginning_of_month }
+    
     date_string = params[:date_string]
     @fixed_incomes_amount = FixedIncome.for_user(current_user).sum(:amount)
     @month_fixed_expenses_amount = FixedExpense.for_user(current_user).sum(:amount)

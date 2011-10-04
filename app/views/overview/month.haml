@@ -1,7 +1,11 @@
+.right-box
+  %h2=t 'Switch to month'
+  %ul
+    -@expenses_months.each do |month,expenses|
+      %li=link_to l(month, :format => :month_year), month_path(month.strftime('%Y-%m-%d'))
+
 %h1
-  = params[:date_string].to_date.month
-  ="/"
-  = params[:date_string].to_date.year
+  = l(params[:date_string].to_date, :format => :month_year)
 %table{:class=>"overview"}
   %tr
     %th= t 'Fixed incomes'

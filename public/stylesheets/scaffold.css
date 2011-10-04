@@ -72,6 +72,18 @@ a:hover { color: #fff; background-color:#000; }
   list-style: square;
 }
 
+.right-box {
+  float: right;
+  background-color: #444;
+  color: #fff;
+  padding: 10px 20px;
+}
+.right-box ul, .right-box li{
+  margin: 10px;
+  padding: 0px;
+}
+.right-box a{ color: #fff;}
+
 ul#menu {
   background-color: #444;
   color: #fff;
