@@ -54,6 +54,7 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing or commenting them out if you're using named routes and resources.
   
   map.root :controller => 'overview', :action => 'current_month'
+  map.month 'month/:date_string', :controller => 'overview', :action => 'month'
   map.connect 'stats', :controller => 'expenses', :action => 'stats'
 
   map.connect ':controller/:action/:id'
