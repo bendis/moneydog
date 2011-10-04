@@ -173,3 +173,87 @@ ActionView::TemplateError (undefined method `email' for #<UserSession: no creden
     haml (3.0.21) rails/./lib/sass/plugin/rack.rb:41:in `call'
 
 Rendering /Users/bendis/htdocs/moneydog/public/500.html (500 Internal Server Error)
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2011-10-03 22:10:22) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"remember_me"=>"0", "password"=>"[FILTERED]", "email"=>"lucie.benes@gmail.com"}, "action"=>"create", "controller"=>"user_sessions"}
+Rendering template within layouts/moneydog
+Rendering user_sessions/new
+
+ActionView::TemplateError (undefined method `email' for #<UserSession: no credentials provided>) on line #6 of app/views/user_sessions/new.html.erb:
+3: <% form_for @user_session, :url => user_session_path do |f| %>
+4:   <%= f.error_messages %>
+5:   <%= f.label :email %><br />
+6:   <%= f.text_field :email %><br />
+7:   <br />
+8:   <%= f.label :password %><br />
+9:   <%= f.password_field :password %><br />
+
+    app/views/user_sessions/new.html.erb:6
+    haml (3.0.21) [v] rails/./lib/haml/helpers/action_view_mods.rb:235:in `form_for'
+    app/views/user_sessions/new.html.erb:3
+    haml (3.0.21) [v] rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (3.0.21) [v] rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    app/controllers/user_sessions_controller.rb:22:in `create'
+    haml (3.0.21) [v] rails/./lib/sass/plugin/rack.rb:41:in `call'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing OverviewController#current_month (for 127.0.0.1 at 2011-10-03 22:10:26) [GET]
+  Parameters: {"action"=>"current_month", "controller"=>"overview"}
+Redirected to http://localhost:3000/user_session/new
+Filter chain halted as [:require_user] rendered_or_redirected.
+Completed in 2ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2011-10-03 22:10:26) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/moneydog
+Rendering user_sessions/new
+
+ActionView::TemplateError (undefined method `email' for #<UserSession: no credentials provided>) on line #6 of app/views/user_sessions/new.html.erb:
+3: <% form_for @user_session, :url => user_session_path do |f| %>
+4:   <%= f.error_messages %>
+5:   <%= f.label :email %><br />
+6:   <%= f.text_field :email %><br />
+7:   <br />
+8:   <%= f.label :password %><br />
+9:   <%= f.password_field :password %><br />
+
+    app/views/user_sessions/new.html.erb:6
+    haml (3.0.21) [v] rails/./lib/haml/helpers/action_view_mods.rb:235:in `form_for'
+    app/views/user_sessions/new.html.erb:3
+    haml (3.0.21) [v] rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (3.0.21) [v] rails/./lib/haml/helpers/action_view_mods.rb:13:in `render'
+    app/controllers/user_sessions_controller.rb:10:in `new'
+    haml (3.0.21) [v] rails/./lib/sass/plugin/rack.rb:41:in `call'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing OverviewController#current_month (for 127.0.0.1 at 2011-10-03 22:15:50) [GET]
+  Parameters: {"action"=>"current_month", "controller"=>"overview"}
+Redirected to http://localhost:3000/user_session/new
+Filter chain halted as [:require_user] rendered_or_redirected.
+Completed in 2ms (DB: 0) | 302 Found [http://localhost/]
+
+
+Processing UserSessionsController#new (for 127.0.0.1 at 2011-10-03 22:15:50) [GET]
+  Parameters: {"action"=>"new", "controller"=>"user_sessions"}
+Rendering template within layouts/moneydog
+Rendering user_sessions/new
+Completed in 8ms (View: 5, DB: 0) | 200 OK [http://localhost/user_session/new]
+
+
+Processing UserSessionsController#create (for 127.0.0.1 at 2011-10-03 22:15:56) [POST]
+  Parameters: {"commit"=>"Login", "user_session"=>{"remember_me"=>"0", "password"=>"[FILTERED]", "email"=>"lucie.benes@gmail.com"}, "action"=>"create", "controller"=>"user_sessions"}
+Redirected to http://localhost:3000/
+Completed in 120ms (DB: 1) | 302 Found [http://localhost/user_session]
+
+
+Processing OverviewController#current_month (for 127.0.0.1 at 2011-10-03 22:15:56) [GET]
+  Parameters: {"action"=>"current_month", "controller"=>"overview"}
+Rendering template within layouts/moneydog
+Rendering overview/current_month
+Completed in 42ms (View: 11, DB: 3) | 200 OK [http://localhost/]

@@ -15,11 +15,16 @@ class UserSessionsController < ApplicationController
   
   def create
     @user_session = UserSession.new(params[:user_session])
-    if @user_session.save
-      flash[:notice] = t "Login successful"
-      redirect_back_or_default account_url
-    else
-      render :action => :new
+
+    respond_to do |format|
+      if @user_session.save
+        flash[:notice] = t "Login successful"
+        format.html { redirect_back_or_default account_url }
+        format.iphone { redirect_to(expenses_path) }
+      else
+        format.html { render :action => :new }
+        format.iphone { render :action => :new, :layout => false }
+      end
     end
   end
   
