@@ -1,7 +1,7 @@
-body { background-color: #fff; color: #000; }
+body { background-color: #fff; color: #000; margin:0px;}
 
 body, p, ol, ul, td {
-  font-family: Calibri, verdana, arial, helvetica, sans-serif;
+  font-family: calibri, arial, helvetica, sans-serif;
   font-size:   14px;
   line-height: 18px;
 }
@@ -85,16 +85,96 @@ a:hover { color: #fff; background-color:#000; }
 .right-box a{ color: #fff;}
 
 ul#menu {
-  background-color: #444;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  width: 990px;
   color: #fff;
-  padding: 10px;
   list-style: none;
-  margin-top: 0;
+  padding-top: 65px;
 }
 ul#menu li{
   display: inline;
-  margin-right: 20px;
 }
 ul#menu li a{
+  display:block;
+  padding: 10px 15px 5px 15px;
+  margin-right: 3px;
+  color: #fff;
+  float: left;
+  font-size: 16px;
+  text-decoration: none;
+  background-color: #333;
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 0px 0px;
+  -khtml-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  
+}
+ul#menu li a:hover{
+  background-color: #000;
+}
+ul#menu li a.active{
+  background-color: #fff;
+}
+
+#head {
+  text-align: center;
+  margin-top:0px;
+  height: 120px;
+  background-color: #555;
+}
+#content{
+  margin-left:auto;
+  margin-right: auto;
+  width: 910px;
+  padding: 20px 40px;
+  margin-top: -20px;
+  background-color: #fff;
+  -moz-box-shadow: 0px 0px 10px #000;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  
+}
+#content.thin{
+  width: 400px;
+}
+#logo {
+  position:absolute;
+  top: 0px;
+  padding: 10px;
+  font-size:30px;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #f4c946;
+  text-shadow: 2px 2px 2px #000;
+  letter-spacing:-1px;
+}
+#logo.login {
+  position: relative;
+  padding-top: 50px;
+}
+
+#user-info {
+  float: right;
+  margin-right: 20px;
+  padding-top: 10px;
   color: #fff;
 }
+
+input, select, a.button {
+  font-size: 18px;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  padding: 5px 5px;
+  color: #000;
+  -moz-box-shadow: 0px 0px 3px #ccc;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  
+}
+a.button {background-color: #f0f0f0; line-height: 50px;}

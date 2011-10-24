@@ -35,8 +35,8 @@
         =":&nbsp;&nbsp;&nbsp;"
         =h price_formatted wb
         -i +=1 
-        
-= link_to t('New expense'), new_expense_path 
+= link_to t('New expense'), new_expense_path, :class => 'button'
+
 %table
   %tr
     %th
@@ -64,4 +64,4 @@
 
 %br
 
-= link_to t('New expense'), new_expense_path 
+= link_to t('New expense'), new_expense_path, :class => 'button'

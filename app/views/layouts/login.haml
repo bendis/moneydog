@@ -1,0 +1,14 @@
+!!!
+%html{"xmlns"=>"http://www.w3.org/1999/xhtml", "xml:lang"=>"cs-CZ"}
+  %head
+    %meta{ 'http-equiv' => 'Content-Type', :content => 'text/html;charset=utf-8' }
+    %meta{ 'http-equiv' => 'content-language', :content => 'cs' }
+    %title="Moneydog#{t controller.class.name} | #{t controller.action_name}"
+    = stylesheet_link_tag 'scaffold'
+  %body
+    #head
+      #logo.login="money dog"
+    #content.thin
+      %p{:style => "color: green"}
+        =flash[:notice]
+      = yield
