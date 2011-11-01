@@ -4,9 +4,10 @@ class OverviewController < ApplicationController
   def current_month
     @expenses_months = Expense.all.group_by{ |t| t.date.beginning_of_month }
     
+    date_string = Date.today
     
-    @fixed_incomes_amount = FixedIncome.for_user(current_user).sum(:amount)
-    @current_month_fixed_expenses_amount = FixedExpense.for_user(current_user).sum(:amount)
+    @fixed_incomes_amount = FixedIncome.for_user(current_user).valid(date_string).sum(:amount)
+    @current_month_fixed_expenses_amount = FixedExpense.for_user(current_user).valid(date_string).sum(:amount)
     @current_month_expenses = Expense.for_user(current_user).current_month.not_from_savings.all
     @current_month_incomes = Income.for_user(current_user).current_month.all
     @current_month_expenses_amount = Expense.for_user(current_user).current_month.not_from_savings.sum(:price)
@@ -37,8 +38,8 @@ class OverviewController < ApplicationController
     @expenses_months = Expense.all.group_by{ |t| t.date.beginning_of_month }
     
     date_string = params[:date_string]
-    @fixed_incomes_amount = FixedIncome.for_user(current_user).sum(:amount)
-    @month_fixed_expenses_amount = FixedExpense.for_user(current_user).sum(:amount)
+    @fixed_incomes_amount = FixedIncome.for_user(current_user).valid(date_string).sum(:amount)
+    @month_fixed_expenses_amount = FixedExpense.for_user(current_user).valid(date_string).sum(:amount)
     @month_expenses = Expense.for_user(current_user).month(date_string).not_from_savings.all
     @month_incomes = Income.for_user(current_user).month(date_string).all
     @month_expenses_amount = Expense.for_user(current_user).month(date_string).not_from_savings.sum(:price)

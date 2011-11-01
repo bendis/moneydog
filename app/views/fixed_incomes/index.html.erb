@@ -3,12 +3,16 @@
 <table>
   <tr>
     <th><%=t'Name'%></th>
+    <th><%= t'Valid from'%></th>
+    <th><%= t'Valid to'%></th>
     <th><%=t'Amount'%></th>
   </tr>
 
 <% @fixed_incomes.each do |fixed_income| %>
   <tr>
     <td><%=h fixed_income.name %></td>
+    <td><%=fixed_income.valid_from.to_date unless fixed_income.valid_from.nil? %></td>
+    <td><%=h fixed_income.valid_to.to_date unless fixed_income.valid_to.nil?%></td>
     <td><%=h fixed_income.amount %></td>
     <td><%= link_to t('Show'), fixed_income %></td>
     <td><%= link_to t('Edit'), edit_fixed_income_path(fixed_income) %></td>

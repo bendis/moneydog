@@ -56,6 +56,9 @@ cs:
   Logout: Odhlásit se
   Are you sure you want to logout?: Opravdu se chcete odhlásit?
   Are you sure?: Opravdu?
+  Valid from: Platný od
+  Valid to: Platný do
+  I want to finish this: Chci toto ukončit
   
   Login successful: Přihlášení proběhlo úspěšně
   Logout successful: Odhlášení proběhlo úspěšně
@@ -81,9 +84,13 @@ cs:
         amount: Částka
       fixed_expense:
         name: Název
+        valid_from: Platný od
+        valid_to: Platný do
         amount: Částka
       fixed_income:
         name: Název
+        valid_from: Platný od
+        valid_to: Platný do
         amount: Částka
       user_session:
         login: Přihlašovací jméno

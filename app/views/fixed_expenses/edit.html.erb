@@ -8,6 +8,19 @@
     <%= f.text_field :name %>
   </p>
   <p>
+    <%= f.label :valid_from %>
+    <br />
+    <%= f.date_select :valid_from %>
+  </p>
+  <p>
+    <%= f.label :valid_to %>
+    <br />
+    <span id="disabled" style="display:none">
+      <%= f.date_select :valid_to, :disabled => (true if @fixed_expense.valid_to.nil?) %>
+    </span>
+    <%= link_to_function(t('I want to finish this'),'$("select:disabled").removeAttr("disabled");$("#disabled").fadeIn();$(this).hide()') %>
+  </p>
+  <p>
     <%= f.label :amount %><br />
     <%= f.text_field :amount %>
   </p>
