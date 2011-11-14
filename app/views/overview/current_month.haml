@@ -6,6 +6,9 @@
 
 %h1
   = l(Date.today, :format => :month_year)
+  %span.small
+    ="&nbsp;"
+    =t('this month starts with', :day => l(Date.today.beginning_of_month, :format => :week_day))
 %table{:class=>"overview"}
   %tr
     %th= t 'Fixed incomes'

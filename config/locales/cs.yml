@@ -59,6 +59,7 @@ cs:
   Valid from: Platný od
   Valid to: Platný do
   I want to finish this: Chci toto ukončit
+  this month starts with: "Nový týden začíná v %{day}"
   
   Login successful: Přihlášení proběhlo úspěšně
   Logout successful: Odhlášení proběhlo úspěšně

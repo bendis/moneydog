@@ -182,4 +182,17 @@ input, select, a.button {
   -webkit-border-radius: 5px;
   
 }
-a.button {background-color: #f0f0f0; line-height: 50px;}
+a.button, input[type=submit] {
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #f4c946; line-height: 50px;
+  box-shadow: 2px 2px 5px #555;
+  -moz-box-shadow: 2px 2px 5px #555;
+  -khtml-box-shadow: 2px 2px 5px #555;
+  -webkit-box-shadow: 2px 2px 5px #555;
+}
+
+.small {
+  font-size: 80%;
+  color: #999;
+}
