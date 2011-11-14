@@ -185,11 +185,16 @@ input, select, a.button {
 a.button, input[type=submit] {
   cursor: pointer;
   font-weight: bold;
-  background-color: #f4c946; line-height: 50px;
+  background-color: #f4c946; 
+  line-height: 30px;
   box-shadow: 2px 2px 5px #555;
   -moz-box-shadow: 2px 2px 5px #555;
   -khtml-box-shadow: 2px 2px 5px #555;
   -webkit-box-shadow: 2px 2px 5px #555;
+}
+
+a.button {
+  line-height: 50px;
 }
 
 .small {
