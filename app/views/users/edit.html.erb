@@ -1,10 +1,10 @@
-<h1><%= t'Edit My Account' %></h1>
+<h1><%= t 'Edit My Account' %></h1>
 
-<% form_for @user, :url => account_path do |f| %>
-  <%= f.error_messages %>
-  <%= render :partial => "form", :object => f %>
+<%= form_with model: @user, url: account_path do |f| %>
+  <%= render "shared/errors", object: f.object %>
+  <%= render partial: "form", locals: { form: f } %>
   <br />
-  <%= f.submit t"Update" %>
+  <%= f.submit t("Update") %>
 <% end %>
 
 <br /><%= link_to t("My Profile"), account_path %>

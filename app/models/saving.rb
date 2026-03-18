@@ -1,14 +1,10 @@
-class Saving < ActiveRecord::Base
-  validates_numericality_of :amount
+class Saving < ApplicationRecord
+  validates :amount, numericality: true
+
   belongs_to :user
-  
-  named_scope :for_user, lambda { |user|
+
+  scope :for_user, lambda { |user|
     user = User.find(user) unless user.is_a? User
-    user ? { :conditions => { :user_id => user.id } } : {}
-  }
-  
-  named_scope :current, lambda {
-    {:conditions => ["created_at >= ?",
-      Time.now]}
+    user ? where(user_id: user.id) : none
   }
 end

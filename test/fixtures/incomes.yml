@@ -1,0 +1,13 @@
+one:
+  id: 1
+  name: "Salary"
+  amount: 50000.00
+  date: <%= Date.today.to_s %>
+  user_id: 1
+
+two:
+  id: 2
+  name: "Freelance"
+  amount: 10000.00
+  date: <%= Date.today.to_s %>
+  user_id: 1

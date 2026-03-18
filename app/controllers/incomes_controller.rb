@@ -1,88 +1,82 @@
 class IncomesController < ApplicationController
-  layout 'moneydog'
-  before_filter :require_user
-  # GET /incomes
-  # GET /incomes.xml
+  layout "moneydog"
+  before_action :require_user
+
   def index
-    @incomes = Income.for_user(current_user).all
+    @incomes = Income.for_user(current_user)
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @incomes }
+      format.html
+      format.xml { render xml: @incomes }
     end
   end
 
-  # GET /incomes/1
-  # GET /incomes/1.xml
   def show
     @income = Income.for_user(current_user).find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @income }
+      format.html
+      format.xml { render xml: @income }
     end
   end
 
-  # GET /incomes/new
-  # GET /incomes/new.xml
   def new
     @income = Income.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @income }
+      format.html
+      format.xml { render xml: @income }
     end
   end
 
-  # GET /incomes/1/edit
   def edit
     @income = Income.for_user(current_user).find(params[:id])
   end
 
-  # POST /incomes
-  # POST /incomes.xml
   def create
-    @income = Income.new(params[:income])
+    @income = Income.new(income_params)
     @income.user_id = current_user.id
 
     respond_to do |format|
       if @income.save
-        flash[:notice] = 'Income was successfully created.'
-        format.html { redirect_to(incomes_path) }
-        format.xml  { render :xml => @income, :status => :created, :location => @income }
+        flash[:notice] = "Income was successfully created."
+        format.html { redirect_to incomes_path }
+        format.xml { render xml: @income, status: :created, location: @income }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @income.errors, :status => :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity }
+        format.xml { render xml: @income.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /incomes/1
-  # PUT /incomes/1.xml
   def update
     @income = Income.for_user(current_user).find(params[:id])
 
     respond_to do |format|
-      if @income.update_attributes(params[:income])
-        flash[:notice] = 'Income was successfully updated.'
-        format.html { redirect_to(incomes_path) }
-        format.xml  { head :ok }
+      if @income.update(income_params)
+        flash[:notice] = "Income was successfully updated."
+        format.html { redirect_to incomes_path }
+        format.xml { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @income.errors, :status => :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_entity }
+        format.xml { render xml: @income.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /incomes/1
-  # DELETE /incomes/1.xml
   def destroy
     @income = Income.for_user(current_user).find(params[:id])
     @income.destroy
 
     respond_to do |format|
-      format.html { redirect_to(incomes_url) }
-      format.xml  { head :ok }
+      format.html { redirect_to incomes_url }
+      format.xml { head :ok }
     end
+  end
+
+  private
+
+  def income_params
+    params.require(:income).permit(:name, :amount, :date)
   end
 end

@@ -1,36 +1,25 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
 class ApplicationController < ActionController::Base
-  helper :all # include all helpers, all the time
-  
-  filter_parameter_logging :password, :password_confirmation
+  helper :all
 
-  helper_method :current_user_session, :current_user
-  
-  before_filter :adjust_format_for_iphone
+  helper_method :current_user
 
+  before_action :adjust_format_for_iphone
 
-private
-  # Set iPhone format if request
+  private
+
   def adjust_format_for_iphone
-    if (request.env["HTTP_USER_AGENT"] && ((request.env["HTTP_USER_AGENT"][/(iPhone)/]== "iPhone") || (request.env["HTTP_USER_AGENT"][/(Android)/]== "Android")))
+    if request.env["HTTP_USER_AGENT"] &&
+        (request.env["HTTP_USER_AGENT"][/(iPhone)/] == "iPhone" ||
+         request.env["HTTP_USER_AGENT"][/(Android)/] == "Android")
       request.format = :iphone
-    else
-      return true
     end
-  end
-
-  def current_user_session
-    return @current_user_session if defined?(@current_user_session)
-    @current_user_session = UserSession.find
   end
 
   def current_user
     return @current_user if defined?(@current_user)
-    @current_user = current_user_session && current_user_session.user
+    @current_user = User.find_by(id: session[:user_id])
   end
-  
+
   def require_user
     unless current_user
       store_location
@@ -48,9 +37,9 @@ private
       return false
     end
   end
-  
+
   def store_location
-    session[:return_to] = request.request_uri
+    session[:return_to] = request.url
   end
 
   def redirect_back_or_default(default)
