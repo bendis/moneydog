@@ -27,6 +27,8 @@ class OverviewController < ApplicationController
 
     @balance = @fixed_incomes_amount + @current_month_incomes_amount -
                (@current_month_expenses_amount + @current_month_fixed_expenses_amount) - @savings
+
+    @expenses_months = Expense.for_user(current_user).group_by { |e| e.date.beginning_of_month }
   end
 
   def month
@@ -54,5 +56,7 @@ class OverviewController < ApplicationController
 
     @balance = @fixed_incomes_amount + @month_incomes_amount -
                (@month_expenses_amount + @month_fixed_expenses_amount) - @savings
+
+    @expenses_months = Expense.for_user(current_user).group_by { |e| e.date.beginning_of_month }
   end
 end
