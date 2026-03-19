@@ -32,4 +32,10 @@ class UserTest < ActiveSupport::TestCase
     assert_not user.valid?
     assert user.errors[:password].any?
   end
+
+  test "invalid when password confirmation does not match" do
+    user = User.new(email: "new@example.com", password: "password123", password_confirmation: "different")
+    assert_not user.valid?
+    assert user.errors[:password_confirmation].any?
+  end
 end

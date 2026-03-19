@@ -40,5 +40,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     post user_session_url, params: { email: users(:one).email, password: "password123" }
     patch account_url, params: { user: { email: "updated@example.com" } }
     assert_redirected_to account_url
+    assert_equal "updated@example.com", users(:one).reload.email
   end
 end
