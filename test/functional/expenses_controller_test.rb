@@ -15,6 +15,8 @@ class ExpensesControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
     get new_expense_url
     assert_response :success
+    assert_select "form", minimum: 1
+    assert_select "input[name='expense[name]']"
   end
 
   test "should create expense" do
@@ -39,6 +41,8 @@ class ExpensesControllerTest < ActionDispatch::IntegrationTest
   test "should get edit" do
     get edit_expense_url(expenses(:one))
     assert_response :success
+    assert_select "form", minimum: 1
+    assert_select "input[name='expense[name]']"
   end
 
   test "should update expense" do

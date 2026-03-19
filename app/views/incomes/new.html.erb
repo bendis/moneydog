@@ -1,6 +1,6 @@
 <h1><%=t'New income'%></h1>
 
-<% form_for(@income) do |f| %>
+<%= form_for(@income) do |f| %>
   <%= render "shared/errors", object: f.object %>
 
   <p>

@@ -1,6 +1,6 @@
 <h1><%= t'Editing fixed_income'%></h1>
 
-<% form_for(@fixed_income) do |f| %>
+<%= form_for(@fixed_income) do |f| %>
   <%= render "shared/errors", object: f.object %>
 
   <p>
@@ -18,7 +18,7 @@
     <span id="disabled" style="display:none">
       <%= f.date_select :valid_to, :disabled => (true if @fixed_income.valid_to.nil?) %>
     </span>
-    <%= link_to_function(t('I want to finish this'),'$("select:disabled").removeAttr("disabled");$("#disabled").fadeIn();$(this).hide()') %>
+    <%= link_to t('I want to finish this'), '#', onclick: '$("select:disabled").removeAttr("disabled");$("#disabled").fadeIn();$(this).hide(); return false;' %>
   </p>
   <p>
     <%= f.label :amount %><br />
