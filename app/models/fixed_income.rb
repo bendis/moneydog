@@ -1,15 +1,16 @@
-class FixedIncome < ActiveRecord::Base
-  validates_presence_of :name, :valid_from
-  validates_presence_of :amount
+class FixedIncome < ApplicationRecord
+  validates :name, presence: true
+  validates :valid_from, presence: true
+  validates :amount, presence: true, numericality: true
+
   belongs_to :user
-  
-  named_scope :for_user, lambda { |user|
+
+  scope :for_user, lambda { |user|
     user = User.find(user) unless user.is_a? User
-    user ? { :conditions => { :user_id => user.id } } : {}
+    user ? where(user_id: user.id) : none
   }
 
-  named_scope :valid, lambda { |date|
-    {:conditions => ["valid_from <= ? AND (valid_to >= ? OR valid_to IS ?)", date.to_date, date.to_date, nil]}
+  scope :valid, lambda { |date|
+    where("valid_from <= ? AND (valid_to >= ? OR valid_to IS NULL)", date.to_date, date.to_date)
   }
-  
 end

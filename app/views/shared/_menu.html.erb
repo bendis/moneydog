@@ -7,11 +7,11 @@
   <li><%= link_to t('Savings'), savings_path %></li>
   <li style="float:right; margin-right: 25px">
   <% if !current_user %>
-    <%= link_to t("Register"), new_account_path %>
+    <%= link_to t("Register"), new_user_path %>
     <%= link_to t("Log in"), new_user_session_path %>
   <% else %>
     <%= link_to t("My Account"), account_path %>
-    <%= link_to t("Logout"), user_session_path, :method => :delete, :confirm => t("Are you sure you want to logout?") %>
+    <%= button_to t("Logout"), user_session_path, method: :delete, form: { data: { turbo: false } } %>
   <% end %>
   </li>
 </ul>

@@ -1,0 +1,15 @@
+one:
+  id: 1
+  name: "Rent"
+  amount: 15000.00
+  valid_from: <%= 1.year.ago.to_s %>
+  valid_to: null
+  user_id: 1
+
+two:
+  id: 2
+  name: "Internet"
+  amount: 500.00
+  valid_from: <%= 1.year.ago.to_s %>
+  valid_to: null
+  user_id: 1

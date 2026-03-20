@@ -1,37 +1,11 @@
 <p>
   <b>Email:</b>
-  <%=h @user.email %>
+  <%= @user.email %>
 </p>
 
 <p>
-  <b>Login count:</b>
-  <%=h @user.login_count %>
+  <b>Member since:</b>
+  <%= @user.created_at.strftime("%d. %m. %Y") %>
 </p>
-
-<p>
-  <b>Last request at:</b>
-  <%=h @user.last_request_at %>
-</p>
-
-<p>
-  <b>Last login at:</b>
-  <%=h @user.last_login_at %>
-</p>
-
-<p>
-  <b>Current login at:</b>
-  <%=h @user.current_login_at %>
-</p>
-
-<p>
-  <b>Last login ip:</b>
-  <%=h @user.last_login_ip %>
-</p>
-
-<p>
-  <b>Current login ip:</b>
-  <%=h @user.current_login_ip %>
-</p>
-
 
 <%= link_to 'Edit', edit_account_path %>

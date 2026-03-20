@@ -1,38 +1,45 @@
 class UsersController < ApplicationController
-  layout 'moneydog'
+  layout "moneydog"
 
-  before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:show, :edit, :update]
-  
+  before_action :require_no_user, only: [:new, :create]
+  before_action :require_user, only: [:show, :edit, :update]
+
   def new
     @user = User.new
   end
-  
+
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       flash[:notice] = "Account registered!"
       redirect_back_or_default account_url
     else
-      render :action => :new
+      render :new, status: :unprocessable_entity
     end
   end
-  
+
   def show
-    @user = @current_user
+    @user = current_user
   end
 
   def edit
-    @user = @current_user
+    @user = current_user
   end
-  
+
   def update
-    @user = @current_user # makes our views "cleaner" and more consistent
-    if @user.update_attributes(params[:user])
+    @user = current_user
+    if @user.update(user_params)
       flash[:notice] = "Account updated!"
       redirect_to account_url
     else
-      render :action => :edit
+      render :edit, status: :unprocessable_entity
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end

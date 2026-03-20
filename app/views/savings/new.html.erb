@@ -1,7 +1,7 @@
 <h1><%=t'New saving'%></h1>
 
-<% form_for(@saving) do |f| %>
-  <%= f.error_messages %>
+<%= form_for(@saving) do |f| %>
+  <%= render "shared/errors", object: f.object %>
 
   <p>
     <%= f.label :amount %><br />

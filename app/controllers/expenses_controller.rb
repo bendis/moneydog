@@ -1,116 +1,106 @@
 class ExpensesController < ApplicationController
+  layout "moneydog"
+  before_action :require_user
 
-  layout 'moneydog'
-  before_filter :require_user
-  # GET /expenses
-  # GET /expenses.xml
   def index
-    @expenses = Expense.for_user(current_user).all
+    @expenses = Expense.for_user(current_user)
     @sum = Expense.for_user(current_user).sum(:price)
-    
+
     respond_to do |format|
-      format.html # index.html.erb
-      format.iphone {render :layout => false}
-      format.xml  { render :xml => @expenses }
-    end
-  end
-  
-  def stats
-    @total = Expense.for_user(current_user).sum('price')
-    
-    range = Date.today.beginning_of_month..Date.today.end_of_month
-    
-    @current_month = Expense.for_user(current_user).sum('price', :conditions => {:date => range})
-    @benzin = Expense.for_user(current_user).sum('price', :conditions => "name LIKE 'Benz%'")
-    @obed = Expense.for_user(current_user).sum('price', :conditions => "name LIKE '%oběd%'")
-    @nakup = Expense.for_user(current_user).sum('price', :conditions => "name LIKE 'Nákup%'")
-    
-    respond_to do |format|
-      format.html # stats.html.erb
+      format.html
+      format.iphone { render layout: false }
+      format.xml { render xml: @expenses }
     end
   end
 
-  # GET /expenses/1
-  # GET /expenses/1.xml
+  def stats
+    @total = Expense.for_user(current_user).sum(:price)
+    range = Date.today.beginning_of_month..Date.today.end_of_month
+    @current_month = Expense.for_user(current_user).where(date: range).sum(:price)
+    @benzin = Expense.for_user(current_user).where("name LIKE 'Benz%'").sum(:price)
+    @obed = Expense.for_user(current_user).where("name LIKE '%oběd%'").sum(:price)
+    @nakup = Expense.for_user(current_user).where("name LIKE 'Nákup%'").sum(:price)
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def show
     @expense = Expense.for_user(current_user).find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @expense }
+      format.html
+      format.xml { render xml: @expense }
     end
   end
 
-  # GET /expenses/new
-  # GET /expenses/new.xml
   def new
     @expense = Expense.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.iphone { render :layout => false}
-      format.xml  { render :xml => @expense }
+      format.html
+      format.iphone { render layout: false }
+      format.xml { render xml: @expense }
     end
   end
 
-  # GET /expenses/1/edit
   def edit
     @expense = Expense.for_user(current_user).find(params[:id])
+
     respond_to do |format|
-      format.html # new.html.erb
-      format.iphone { render :layout => false}
+      format.html
+      format.iphone { render layout: false }
     end
-    
   end
 
-  # POST /expenses
-  # POST /expenses.xml
   def create
-    @expense = Expense.new(params[:expense])
+    @expense = Expense.new(expense_params)
     @expense.user_id = current_user.id
 
     respond_to do |format|
       if @expense.save
-        flash[:notice] = 'Expense was successfully created.'
-        format.html { redirect_to(expenses_path) }
-        format.iphone { redirect_to(expenses_path) }
-        format.xml  { render :xml => @expense, :status => :created, :location => @expense }
+        flash[:notice] = "Expense was successfully created."
+        format.html { redirect_to expenses_path }
+        format.iphone { redirect_to expenses_path }
+        format.xml { render xml: @expense, status: :created, location: @expense }
       else
-        format.html { render :action => "new" }
-        format.iphone { render :action => "new", :layout => false }
-        format.xml  { render :xml => @expense.errors, :status => :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity }
+        format.iphone { render :new, layout: false, status: :unprocessable_entity }
+        format.xml { render xml: @expense.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /expenses/1
-  # PUT /expenses/1.xml
   def update
     @expense = Expense.for_user(current_user).find(params[:id])
 
     respond_to do |format|
-      if @expense.update_attributes(params[:expense])
-        flash[:notice] = 'Expense was successfully updated.'
-        format.html { redirect_to(expenses_path) }
-        format.xml  { head :ok }
+      if @expense.update(expense_params)
+        flash[:notice] = "Expense was successfully updated."
+        format.html { redirect_to expenses_path }
+        format.xml { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @expense.errors, :status => :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_entity }
+        format.xml { render xml: @expense.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /expenses/1
-  # DELETE /expenses/1.xml
   def destroy
     @expense = Expense.for_user(current_user).find(params[:id])
     @expense.destroy
 
     respond_to do |format|
-      format.html { redirect_to('/') }
-      format.iphone { redirect_to('/') }
-      format.xml  { head :ok }
+      format.html { redirect_to root_url }
+      format.iphone { redirect_to root_url }
+      format.xml { head :ok }
     end
   end
-  
+
+  private
+
+  def expense_params
+    params.require(:expense).permit(:name, :price, :date, :from_savings)
+  end
 end
