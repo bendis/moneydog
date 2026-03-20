@@ -29,7 +29,7 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    reset_session
     flash[:notice] = t("Logout successful")
     redirect_to new_user_session_url
   end

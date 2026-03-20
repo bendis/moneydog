@@ -12,7 +12,7 @@
   <% else %>
     Logged as: <%= current_user.email %> |
     <%= link_to t("My Account"), account_path %> |
-    <%= link_to t("Logout"), user_session_path, :method => :delete, :confirm => t("Are you sure you want to logout?") %>
+    <%= button_to t("Logout"), user_session_path, method: :delete, form: { data: { turbo: false } } %>
   <% end %>
   </li>
 </ul>
